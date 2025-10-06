@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - 3D Holographic Interface</title>
+    <link rel="stylesheet" href="/css/holographic.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- 3D Background Canvas -->
+    <div id="threejs-container"></div>
+    
+    <!-- Floating Navigation -->
+    <nav class="holographic-nav">
+        <div class="nav-brand">
+            <div class="pulse-ring"></div>
+            <h1>🚀 Dev Utility Hub</h1>
+        </div>
+        <div class="nav-controls">
+            <button class="holographic-btn" id="themeToggle">🌙 Matrix Mode</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Grid -->
+    <main class="holographic-grid">
+        <% features.forEach((feature, index) => { %>
+            <div class="utility-card" data-endpoint="<%= feature.endpoint %>">
+                <div class="card-glow"></div>
+                <div class="card-icon"><%= feature.icon %></div>
+                <h3 class="card-title"><%= feature.name %></h3>
+                <div class="card-content" id="content-<%= index %>">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn" onclick="loadUtility('<%= feature.endpoint %>', <%= index %>)">
+                        Activate
+                    </button>
+                </div>
+            </div>
+        <% }); %>
+    </main>
+
+    <!-- Output Panel -->
+    <div class="output-panel">
+        <div class="panel-header">
+            <h3>🔮 Output Console</h3>
+            <button class="clear-btn" onclick="clearOutput()">Clear</button>
+        </div>
+        <div class="panel-content" id="outputContent">
+            <div class="welcome-message">
+                💫 Select a utility to begin... The interface responds to your movements!
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particle-field"></div>
+
+    <script src="/js/threejs-app.js"></script>
+    <script src="/js/particle-system.js"></script>
+    <script src="/js/api-interactions.js"></script>
+</body>
+</html>
