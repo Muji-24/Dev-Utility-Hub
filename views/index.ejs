@@ -32,11 +32,12 @@
                 <div class="card-content" id="content-<%= index %>">
                     <!-- Dynamic content will be loaded here -->
                 </div>
-                <div class="card-actions">
-                    <button class="action-btn" onclick="loadUtility('<%= feature.endpoint %>', <%= index %>)">
-                        Activate
-                    </button>
-                </div>
+                <!-- In your index.ejs file, replace the card actions section -->
+<div class="card-actions">
+    <button class="action-btn" data-endpoint="<%= feature.endpoint %>">
+        Activate
+    </button>
+</div>
             </div>
         <% }); %>
     </main>
